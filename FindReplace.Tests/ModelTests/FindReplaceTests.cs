@@ -1,62 +1,33 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Numbers.Models;
+using Words.Models;
 using System;
 
-namespace Numbers.Tests
+namespace Words.Tests
 {
   [TestClass]
-  public class PrimeTests : IDisposable
+  public class WordSwapTests : IDisposable
   {
-
     public void Dispose()
     {
-      Prime.ClearAll();
+      WordSwap.ClearAll();
     }
 
     [TestMethod]
-    public void PrimeConstructor_ReturnsNumber_Integer()
+    public void GetSomeUserText_ReturnsSomeUserText_String()
     {
       // Arrange
-      int userInput = 15;
-      
-      // Act
-      Prime newPrime = new Prime(userInput);
-      int result = newPrime.UserInput;
-
-      // Assert
-      Assert.AreEqual(typeof(Prime), newPrime.GetType());
-    }
-
-    [TestMethod]
-    public void CreateArray_ReturnsArray_Array()
-    {
-      // Arrange
-      int userInput = 5;
-      List<int> hardCodedResult = new List<int> {2,3, 4, 5};
-      
-      Console.WriteLine("This is hard code: ");
-      foreach(int item in hardCodedResult)
-      {
-        Console.WriteLine(item);
-      }
-
-      
-      Prime testPrime = new Prime(userInput);
+      string newWords = "All work and no play makes Jack a dull boy.";
+      // Console.WriteLine("Here are newWords: " + newWords);
 
       // Act
-      List<int> result = testPrime.CreateArray();
-
-      Console.WriteLine("This is result: ");
-      foreach(int item in result)
-      {
-        Console.WriteLine(item);
-      }
+      WordSwap newText = new WordSwap(newWords);
+      // Console.WriteLine("Here are your newText: " + newText);
+      string result = newText.NewWords;
+      // Console.WriteLine("Here are your result: " + result);
 
       // Assert
-      CollectionAssert.AreEqual(hardCodedResult, result);
+      Assert.AreEqual(newWords, result);
     }
-
-
   }
 }
